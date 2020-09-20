@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header">header</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Дата(start)</th>
+        <th scope="col">Дата(end)</th>
+        <th scope="col">Цена</th>
+        <th scope="col">Студенты(max)</th>
+        <th scope="col">Время(start)</th>
+        <th scope="col">Время(end)</th>
+        <th scope="col">Доступно мест</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="courseDto : ${coursesDto}">
+        <td th:text=${courseDto.course.name}>Name</td>
+        <td th:text=${courseDto.course.periodDate.startDate}>StartDate</td>
+        <td th:text=${courseDto.course.periodDate.endDate}>EndDate</td>
+        <td th:text=${courseDto.course.price}>Price</td>
+        <td th:text=${courseDto.course.maxCapacity}>MaxCapacity</td>
+        <td th:text=${courseDto.course.periodTime.startTime}>StartTime</td>
+        <td th:text=${courseDto.course.periodTime.endTime}>EndTime</td>
+        <td th:text=${courseDto.availableStudents}>EndTime</td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

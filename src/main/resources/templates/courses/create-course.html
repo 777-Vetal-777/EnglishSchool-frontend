@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header">header</div>
+<div id="content" class="container">
+    <div class="panel-heading">
+        <div class="col-xs-6 col-md-offset-3">
+            <h2 id="reset-password-header">
+                <center>Новый курс</center>
+            </h2>
+        </div>
+        <hr/>
+    </div>
+    <div class="panel-body">
+        <div class="col-lg-12">
+            <form th:action="@{/courses/create-course}" method="post">
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Название</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" id="example-text-input" name="name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">Студенты(max)</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" id="example-number-input" name="maxCapacity">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">Цена</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" id="example-number-input" name="price">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Дата начала</label>
+                    <div class="col-10">
+                        <input class="form-control" type="date" id="example-date-input" name="startDate">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Дата конца</label>
+                    <div class="col-10">
+                        <input class="form-control" type="date" id="example-date-input" name="endDate">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-time-input" class="col-2 col-form-label">Время урока(start)</label>
+                    <div class="col-10">
+                        <input class="form-control" type="time" id="example-time-input" name="startTime">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-time-input" class="col-2 col-form-label">Время урока(finish)</label>
+                    <div class="col-10">
+                        <input class="form-control" type="time" id="example-time-input" name="endTime">
+                    </div>
+                </div>
+                <center>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input type="submit" name="create-course-submit" id="create-course-submit"
+                                   tabindex="4"
+                                   class="btn btn-primary btn-lg"/>
+                        </div>
+                    </div>
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header">header</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Номер телефона</th>
+        <th scope="col">Курс</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td th:text=${student.firstName}>FirstName</td>
+        <td th:text=${student.lastName}>LastName</td>
+        <td th:text=${student.phoneNumber}>PhoneNumber</td>
+        <td th:text=${student.courseName}>CourseName</td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>
