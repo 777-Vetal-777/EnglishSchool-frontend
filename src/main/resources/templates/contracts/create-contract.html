@@ -34,7 +34,7 @@
             <td th:text=${courseDto.course.maxCapacity}>MaxCapacity</td>
             <td th:text=${courseDto.course.periodTime.startTime}>StartTime</td>
             <td th:text=${courseDto.course.periodTime.endTime}>EndTime</td>
-            <td th:text=${courseDto.availableStudents}>AvailableStudents</td>
+            <td th:text=${courseDto.freeVacancies}>AvailableStudents</td>
             <td>
                 <form th:action="@{/contracts/create-contract}" method="post">
                     <input type="hidden" id="studentId" class="form-control" name="studentId"
