@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:replace="fragments/header">header</div>
+<div id="content" class="container">
+    <div class="panel-heading">
+        <div class="col-xs-6 col-md-offset-3">
+            <h2 id="reset-password-header">
+                <center>New Contract</center>
+            </h2>
+        </div>
+        <hr/>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">CourseName</th>
+            <th scope="col">Date(start)</th>
+            <th scope="col">Date(end)</th>
+            <th scope="col">Price</th>
+            <th scope="col">Students(max)</th>
+            <th scope="col">Time(start)</th>
+            <th scope="col">Time(end)</th>
+            <th scope="col">Free vacancies</th>
+            <th scope="col">Create</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="courseDto : ${coursesDto}">
+            <td th:text=${courseDto.course.name}>Name</td>
+            <td th:text=${courseDto.course.periodDate.startDate}>StartDate</td>
+            <td th:text=${courseDto.course.periodDate.endDate}>EndDate</td>
+            <td th:text=${courseDto.course.price}>Price</td>
+            <td th:text=${courseDto.course.maxCapacity}>MaxCapacity</td>
+            <td th:text=${courseDto.course.periodTime.startTime}>StartTime</td>
+            <td th:text=${courseDto.course.periodTime.endTime}>EndTime</td>
+            <td th:text=${courseDto.availableStudents}>AvailableStudents</td>
+            <td>
+                <form th:action="@{/contracts/create-contract}" method="post">
+                    <input type="hidden" id="studentId" class="form-control" name="studentId"
+                           th:value="${studentId}"/>
+                    <input type="hidden" id="courseId" class="form-control" name="courseId"
+                           th:value="${courseDto.course.id}"/>
+                    <button class="btn btn-primary btn-xs center-block" type="submit" name="action"
+                            th:text="Активировать">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -67,6 +68,26 @@ public class RestHandlerImpl implements RestHandler {
         }
         return Optional.ofNullable(responseEntity);
 
+    }
+
+    public boolean doPut(String endpoint) {
+        Assert.notNull(endpoint, NOT_NULL_ENDPOINT_MESSAGE);
+
+
+        String url = backendAppDomain + endpoint;
+        HttpEntity requestEntity = new HttpEntity(createHttpHeader());
+
+        try {
+            restTemplate.exchange(
+                    url,
+                    HttpMethod.PUT,
+                    requestEntity,
+                    String.class);
+        } catch (HttpClientErrorException e) {
+            logger.error(String.format(REQUEST_FAILED_ERROR_MESSAGE, e.getStatusCode()));
+            return false;
+        }
+        return true;
     }
 
     @Override

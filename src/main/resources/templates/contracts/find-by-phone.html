@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:replace="fragments/header">header</div>
-<div th:if="${studentDto}">
+<div th:if="${contractDto}">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -15,14 +15,24 @@
             <th scope="col">LastName</th>
             <th scope="col">Phone</th>
             <th scope="col">Course</th>
+            <th scope="col">Date(start)</th>
+            <th scope="col">Date(end)</th>
+            <th scope="col">Time(start)</th>
+            <th scope="col">Time(end)</th>
+            <th scope="col">Teacher</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td th:text=${studentDto.firstName}>FirstName</td>
-            <td th:text=${studentDto.lastName}>LastName</td>
-            <td th:text=${studentDto.phoneNumber}>Phone</td>
-            <td th:text=${studentDto.courseName}>CourseName</td>
+            <td th:text=${contractDto.studentName}>FirstName</td>
+            <td th:text=${contractDto.studentLastName}>LastName</td>
+            <td th:text=${contractDto.phone}>Phone</td>
+            <td th:text=${contractDto.courseName}>CourseName</td>
+            <td th:text=${contractDto.startDate}>startDate</td>
+            <td th:text=${contractDto.endDate}>endDate</td>
+            <td th:text=${contractDto.startTime}>startTime</td>
+            <td th:text=${contractDto.endTime}>endTime</td>
+            <td th:text=${contractDto.teacherName}>teacherName</td>
         </tr>
 
 
@@ -30,25 +40,25 @@
     </table>
 </div>
 
-<div th:if="!${studentDto}">
+<div th:if="!${contractDto}">
     <div id="content" class="container">
         <div class="panel-heading">
             <div class="col-xs-6 col-md-offset-3">
                 <h2 id="reset-password-header">
-                    <center>Find Student by phone</center>
+                    <center>Find Contract by phone</center>
                 </h2>
             </div>
             <hr/>
         </div>
         <div class="panel-body">
-            <form th:action="@{/students/find-by-phone}" method="post">
+            <form th:action="@{/contracts/find-by-phone}" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number">
                 </div>
                 <center>
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="create-course-submit" id="find-student-submit"
+                            <input type="submit" name="create-course-submit" id="search-contract-submit"
                                    tabindex="4"
                                    class="btn btn-primary btn-lg"/>
                         </div>

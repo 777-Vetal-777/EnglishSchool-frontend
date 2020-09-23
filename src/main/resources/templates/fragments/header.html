@@ -22,81 +22,67 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Домой</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-expanded="false">
-                            Курсы
+                            Courses
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/courses/get-all}">Все курсы</a></li>
-                            <li><a class="dropdown-item" th:href="@{/courses/get-all-active}">Активные курсы</a></li>
-                            <li><a class="dropdown-item" th:href="@{/courses/get-all-wait}">Скоро стартуют</a></li>
-                            <li><a class="dropdown-item" href="#">Заменить преподователя</a></li>
+                            <li><a class="dropdown-item" th:href="@{/courses/get-all}">All courses</a></li>
+                            <li><a class="dropdown-item" th:href="@{/courses/get-all-active}">Active courses</a></li>
+                            <li><a class="dropdown-item" th:href="@{/courses/get-all-wait}">Wait courses</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" th:href="@{/courses/create-course}">Создать курс</a></li>
+                            <li><a class="dropdown-item" th:href="@{/courses/create-course}">Create course</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-expanded="false">
-                            Студенты
+                            Students
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/students/get-all}">Все студенты</a></li>
-                            <li><a class="dropdown-item" th:href="@{/students/get-all-active}">Студенты на курсах</a>
+                            <li><a class="dropdown-item" th:href="@{/students/get-all}">All students</a></li>
+                            <li><a class="dropdown-item" th:href="@{/students/get-all-active}">Students on courses</a>
                             </li>
-                            <li><a class="dropdown-item" th:href="@{/students/create-student}">Добавить студента</a>
+                            <li><a class="dropdown-item" th:href="@{/students/create}">Create student</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" th:href="@{/students/find-by-phone}">Поиск по номеру</a></li>
+                            <li><a class="dropdown-item" th:href="@{/students/find-by-phone}">Search by phone</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-expanded="false">
-                            Преподователи
+                            Teachers
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Все преподователи</a></li>
-                            <li><a class="dropdown-item" href="#">Преподователи без курса</a></li>
+                            <li><a class="dropdown-item" th:href="@{/teachers/get-all}">All teachers</a></li>
+                            <li><a class="dropdown-item" th:href="@{/teachers/find-by-phone}">Search by phone</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Добавить преподователя</a></li>
+                            <li><a class="dropdown-item" th:href="@{/teachers/create}">Create teacher</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-expanded="false">
-                            Оплата
+                            Contracts
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Ожидают оплаты</a></li>
-                            <li><a class="dropdown-item" href="#">Поиск инвойсов по студенту</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Создать инвойс</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-expanded="false">
-                            Контракт
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Открыть контракт</a></li>
+                            <li><a class="dropdown-item" th:href="@{/contracts/find-by-phone}">Create contract</a></li>
+                            <li><a class="dropdown-item" th:href="@{/contracts/find-by-phone}">Search contract</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a class="navbar-brand" href="#">Курсы английского языка</a>
+                    <a class="navbar-brand" href="#">English school</a>
                 </div>
             </div>
         </div>

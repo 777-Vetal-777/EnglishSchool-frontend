@@ -32,6 +32,11 @@ public class CourseController {
 
     private static final String URL_GET_ALL_WAIT = "/get-all-wait";
 
+    private static final String ERROR_MESSAGES_ATTRIBUTE_NAME = "errorMessage";
+
+    private static final String SUCCESS_MESSAGES_ATTRIBUTE_NAME = "successMessage";
+
+
     @Autowired
     private CourseService courseService;
 
@@ -57,6 +62,12 @@ public class CourseController {
 
         Optional<Long> id = courseService.create(course);
 
+        if (id.isEmpty()) {
+            modelAndView.addObject(ERROR_MESSAGES_ATTRIBUTE_NAME, "Not Free Teachers or you should activate teacher");
+        } else {
+            modelAndView.addObject(SUCCESS_MESSAGES_ATTRIBUTE_NAME, "Course was created");
+        }
+        modelAndView.setViewName("/home");
         return modelAndView;
     }
 

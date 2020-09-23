@@ -7,22 +7,24 @@
 </head>
 <body>
 <div th:replace="fragments/header">header</div>
-<div th:if="${studentDto}">
+<div th:if="${teacherDto}">
     <table class="table table-striped">
         <thead>
         <tr>
             <th scope="col">FirstName</th>
             <th scope="col">LastName</th>
             <th scope="col">Phone</th>
-            <th scope="col">Course</th>
+            <th scope="col">Courses(max)</th>
+            <th scope="col">Courses(now)</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td th:text=${studentDto.firstName}>FirstName</td>
-            <td th:text=${studentDto.lastName}>LastName</td>
-            <td th:text=${studentDto.phoneNumber}>Phone</td>
-            <td th:text=${studentDto.courseName}>CourseName</td>
+            <td th:text=${teacherDto.firstName}>FirstName</td>
+            <td th:text=${teacherDto.lastName}>LastName</td>
+            <td th:text=${teacherDto.phoneNumber}>Phone</td>
+            <td th:text=${teacherDto.maxCourses}>MaxCourses</td>
+            <td th:text=${teacherDto.countCourses}>CountCourses</td>
         </tr>
 
 
@@ -30,25 +32,25 @@
     </table>
 </div>
 
-<div th:if="!${studentDto}">
+<div th:if="!${teacherDto}">
     <div id="content" class="container">
         <div class="panel-heading">
             <div class="col-xs-6 col-md-offset-3">
                 <h2 id="reset-password-header">
-                    <center>Find Student by phone</center>
+                    <center>Find teacher by phone</center>
                 </h2>
             </div>
             <hr/>
         </div>
         <div class="panel-body">
-            <form th:action="@{/students/find-by-phone}" method="post">
+            <form th:action="@{/teachers/find-by-phone}" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number">
                 </div>
                 <center>
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="create-course-submit" id="find-student-submit"
+                            <input type="submit" name="create-course-submit" id="create-course-submit"
                                    tabindex="4"
                                    class="btn btn-primary btn-lg"/>
                         </div>

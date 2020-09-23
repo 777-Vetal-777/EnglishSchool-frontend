@@ -14,5 +14,7 @@ public interface RestHandler {
 
     boolean doDeleteToken(String endpoint, Object object);
 
+    boolean doPut(String endpoint);
+
 
 }

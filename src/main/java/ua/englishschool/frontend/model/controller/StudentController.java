@@ -18,11 +18,12 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/students")
 public class StudentController {
+
     private static final String ERROR_MESSAGES_ATTRIBUTE_NAME = "errorMessage";
 
     private static final String SUCCESS_MESSAGES_ATTRIBUTE_NAME = "successMessage";
 
-    private static final String URL_CREATE_STUDENT = "/create-student";
+    private static final String URL_CREATE_STUDENT = "/create";
 
     private static final String URL_FIND_BY_PHONE = "/find-by-phone";
 
@@ -30,17 +31,8 @@ public class StudentController {
 
     private static final String URL_GET_ALL_ACTIVE_STUDENTS_DTO = "/get-all-active";
 
-
     @Autowired
     private StudentService studentService;
-
-
-    @GetMapping("URL_CREATE_STUDENT")
-    public ModelAndView createStudent(ModelAndView modelAndView) {
-        modelAndView.addObject("student", new Student());
-        modelAndView.setViewName("/students/create");
-        return modelAndView;
-    }
 
     @GetMapping(URL_CREATE_STUDENT)
     public ModelAndView addStudent(ModelAndView modelAndView) {
@@ -54,9 +46,9 @@ public class StudentController {
         student.setRole(RoleType.STUDENT);
         Optional<Long> studentId = studentService.create(student);
         if (studentId.isEmpty()) {
-            modelAndView.addObject(ERROR_MESSAGES_ATTRIBUTE_NAME, "Студент не был добавлен, найдите студента по номеру телефона");
+            modelAndView.addObject(ERROR_MESSAGES_ATTRIBUTE_NAME, "Student was not added, you can find by phone");
         } else {
-            modelAndView.addObject(SUCCESS_MESSAGES_ATTRIBUTE_NAME, "Студент был добавлен");
+            modelAndView.addObject(SUCCESS_MESSAGES_ATTRIBUTE_NAME, "Student was added");
         }
         modelAndView.setViewName("/home");
         return modelAndView;
@@ -73,7 +65,7 @@ public class StudentController {
     public ModelAndView findByPhone(ModelAndView modelAndView, @ModelAttribute("phone") String phone) {
         Optional<StudentDto> student = studentService.findByPhone(phone);
         if (student.isEmpty()) {
-            modelAndView.addObject(ERROR_MESSAGES_ATTRIBUTE_NAME, String.format("Студент с номером %s не найден.", phone));
+            modelAndView.addObject(ERROR_MESSAGES_ATTRIBUTE_NAME, String.format("Student with number %s was not found.", phone));
             modelAndView.setViewName("/home");
         } else {
             modelAndView.addObject("studentDto", student.get());
