@@ -29,6 +29,8 @@ public class TeacherRestServiceImpl implements TeacherService {
 
     private static final String URL_GET_ALL_TEACHERS_DTO = "/teachers/dto";
 
+    private static final String URL_GET_ALL_BY_ACTIVE = "/teachers/active/";
+
 
     private static final String URL_CHANGE_STATUS_ACTIVE = "/teachers/change-active/";
 
@@ -83,6 +85,21 @@ public class TeacherRestServiceImpl implements TeacherService {
         List<TeacherDto> listTeacherDto = getListTeacherDtoFromResponseBody(responseEntity.get());
         logger.debug("Get all TeachersDto  is finished successfully.");
         return listTeacherDto;
+    }
+
+    @Override
+    public List<TeacherDto> getAllByActive(boolean active) {
+        logger.debug("Get all TeachersDto(active-true) has been executed");
+        String URL = URL_GET_ALL_BY_ACTIVE + active;
+        Optional<ResponseEntity> responseEntity = restHandler.doGet(URL);
+        if (responseEntity.isEmpty() || !responseEntity.get().hasBody()) {
+            logger.error("Get all TeachersDto(active-true)  is failed. " + RESPONSE_ERROR_MESSAGE);
+            return Collections.emptyList();
+        }
+        List<TeacherDto> listTeacherDto = getListTeacherDtoFromResponseBody(responseEntity.get());
+        logger.debug("Get all TeachersDto(active-true)   is finished successfully.");
+        return listTeacherDto;
+
     }
 
     @Override

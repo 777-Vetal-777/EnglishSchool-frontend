@@ -16,4 +16,5 @@ public interface TeacherService {
 
     Optional<Long> create(Teacher teacher);
 
+    List<TeacherDto> getAllByActive(boolean active);
 }

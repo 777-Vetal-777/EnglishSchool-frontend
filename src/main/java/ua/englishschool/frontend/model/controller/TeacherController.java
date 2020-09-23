@@ -30,6 +30,10 @@ public class TeacherController {
 
     private static final String URL_ACTIVATE = "/change-active";
 
+    private static final String URL_ACTIVE_TRUE = "/active-true";
+
+    private static final String URL_ACTIVE_FALSE = "/active-false";
+
     private static final String ERROR_MESSAGES_ATTRIBUTE_NAME = "errorMessage";
 
     private static final String SUCCESS_MESSAGES_ATTRIBUTE_NAME = "successMessage";
@@ -83,7 +87,7 @@ public class TeacherController {
     }
 
     @PostMapping(URL_ACTIVATE)
-    public ModelAndView activate(ModelAndView modelAndView, long teacherId) {
+    public ModelAndView changeStatus(ModelAndView modelAndView, long teacherId) {
         boolean activateTeacher = teacherService.changeStatusActive(teacherId);
         if (activateTeacher) {
             modelAndView.setViewName("redirect:/teachers/get-all");
@@ -94,5 +98,39 @@ public class TeacherController {
         return modelAndView;
     }
 
+    @GetMapping(URL_ACTIVE_TRUE)
+    public ModelAndView deactivate(ModelAndView modelAndView) {
+        modelAndView.addObject("teachersDto", teacherService.getAllByActive(true));
+        return modelAndView;
+    }
 
+    @PostMapping(URL_ACTIVE_TRUE)
+    public ModelAndView deactivate(ModelAndView modelAndView, long teacherId) {
+        boolean activateTeacher = teacherService.changeStatusActive(teacherId);
+        if (activateTeacher) {
+            modelAndView.setViewName("redirect:/teachers/active-true");
+        } else {
+            modelAndView.addObject(ERROR_MESSAGES_ATTRIBUTE_NAME, "Failed to change status");
+            modelAndView.setViewName("/home");
+        }
+        return modelAndView;
+    }
+
+    @GetMapping(URL_ACTIVE_FALSE)
+    public ModelAndView activate(ModelAndView modelAndView) {
+        modelAndView.addObject("teachersDto", teacherService.getAllByActive(false));
+        return modelAndView;
+    }
+
+    @PostMapping(URL_ACTIVE_FALSE)
+    public ModelAndView activate(ModelAndView modelAndView, long teacherId) {
+        boolean activateTeacher = teacherService.changeStatusActive(teacherId);
+        if (activateTeacher) {
+            modelAndView.setViewName("redirect:/teachers/active-false");
+        } else {
+            modelAndView.addObject(ERROR_MESSAGES_ATTRIBUTE_NAME, "Failed to change status");
+            modelAndView.setViewName("/home");
+        }
+        return modelAndView;
+    }
 }

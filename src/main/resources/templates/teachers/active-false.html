@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:replace="fragments/header">header</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Course(max)</th>
+        <th scope="col">Course(now)</th>
+        <th scope="col">Active</th>
+        <th scope="col">Activate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="teacherDto : ${teachersDto}">
+        <td th:text=${teacherDto.firstName}>FirstName</td>
+        <td th:text=${teacherDto.lastName}>LastName</td>
+        <td th:text=${teacherDto.phoneNumber}>Phone</td>
+        <td th:text=${teacherDto.maxCourses}>MaxCourses</td>
+        <td th:text=${teacherDto.countCourses}>CountCourses</td>
+        <td>
+            <span th:if="${teacherDto.active}">Yes</span>
+            <span th:if="!${teacherDto.active}">No</span>
+        </td>
+
+        <span th:if="!${teacherDto.active}">
+                    <td>
+                        <form th:action="@{/teachers/active-false}" method="post">
+                            <input type="hidden" id="teacherId" class="form-control" name="teacherId"
+                                   th:value="${teacherDto.teacherId}"/>
+
+                            <button class="btn btn-primary btn-xs center-block" type="submit" name="action"
+                                    th:text="Activate">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                        </form>
+                    </td>
+                    </span>
+
+
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>
