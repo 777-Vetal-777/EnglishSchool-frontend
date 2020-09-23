@@ -54,7 +54,7 @@ public class CourseDto {
     public String toString() {
         return "CourseDto{" +
                 "course=" + course +
-                ", availableStudents=" + freeVacancies +
+                ", freeVacancies=" + freeVacancies +
                 '}';
     }
 }

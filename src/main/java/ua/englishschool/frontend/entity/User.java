@@ -1,6 +1,7 @@
 package ua.englishschool.frontend.entity;
 
 
+import com.sun.istack.NotNull;
 import ua.englishschool.frontend.entity.core.RoleType;
 
 import javax.persistence.Column;
@@ -14,28 +15,21 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import java.util.Objects;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "first_name")
+    @NotNull
     private String firstName;
 
-    @Column(name = "last_name")
+    @NotNull
     private String lastName;
 
-    @Column(name = "phone_number", unique = true)
+    @NotNull
     private String phoneNumber;
 
-    @Column
-    @Enumerated(EnumType.STRING)
     private RoleType role;
 
-    @Column
     private boolean active;
 
     public long getId() {

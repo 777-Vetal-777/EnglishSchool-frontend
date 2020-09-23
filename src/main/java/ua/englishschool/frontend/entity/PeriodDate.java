@@ -5,23 +5,19 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Embeddable
+
 public class PeriodDate {
 
 
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @Column(name = "start_date")
     private LocalDate startDate;
 
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @Column(name = "end_date")
     private LocalDate endDate;
 
     public LocalDate getStartDate() {

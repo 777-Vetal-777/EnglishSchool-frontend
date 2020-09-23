@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
 </head>
 <body>
 <header>
@@ -48,12 +47,12 @@
                             <li><a class="dropdown-item" th:href="@{/students/get-all}">All students</a></li>
                             <li><a class="dropdown-item" th:href="@{/students/get-all-active}">Students on courses</a>
                             </li>
-                            <li><a class="dropdown-item" th:href="@{/students/create}">Create student</a>
+                            <li><a class="dropdown-item" th:href="@{/students/find-by-phone}">Find by phone</a></li>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" th:href="@{/students/find-by-phone}">Search by phone</a></li>
+                            <li><a class="dropdown-item" th:href="@{/students/create}">Create student</a>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -63,7 +62,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" th:href="@{/teachers/get-all}">All teachers</a></li>
-                            <li><a class="dropdown-item" th:href="@{/teachers/find-by-phone}">Search by phone</a></li>
+                            <li><a class="dropdown-item" th:href="@{/teachers/find-by-phone}">Find by phone</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -76,8 +75,11 @@
                             Contracts
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/contracts/find-by-phone}">Find contract</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" th:href="@{/contracts/find-by-phone}">Create contract</a></li>
-                            <li><a class="dropdown-item" th:href="@{/contracts/find-by-phone}">Search contract</a></li>
                         </ul>
                     </li>
                 </ul>

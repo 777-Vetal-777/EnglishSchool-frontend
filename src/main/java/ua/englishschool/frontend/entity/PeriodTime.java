@@ -5,22 +5,18 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.time.LocalTime;
 import java.util.Objects;
 
-@Embeddable
+
 public class PeriodTime {
 
     @JsonSerialize(using = LocalTimeSerializer.class)
     @JsonDeserialize(using = LocalTimeDeserializer.class)
-    @Column(name = "start_time")
     private LocalTime startTime;
 
     @JsonSerialize(using = LocalTimeSerializer.class)
     @JsonDeserialize(using = LocalTimeDeserializer.class)
-    @Column(name = "end_time")
     private LocalTime endTime;
 
     public LocalTime getStartTime() {

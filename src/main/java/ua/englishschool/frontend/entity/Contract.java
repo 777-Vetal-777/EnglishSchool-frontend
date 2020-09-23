@@ -2,44 +2,20 @@ package ua.englishschool.frontend.entity;
 
 import ua.englishschool.frontend.entity.core.ContractStatusType;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity
 public class Contract {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id", foreignKey = @ForeignKey(name = "FK_students_contracts"))
     private Student student;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id", foreignKey = @ForeignKey(name = "FK_courses_contracts"))
     private Course course;
 
-    @Column
-    @Enumerated(EnumType.STRING)
     private ContractStatusType contractStatusType;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contract_id", foreignKey = @ForeignKey(name = "FK_student_invoices_contracts"))
     private List<StudentInvoice> studentInvoices = new ArrayList<>();
 
     public long getId() {

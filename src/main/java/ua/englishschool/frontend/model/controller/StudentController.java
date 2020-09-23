@@ -2,6 +2,7 @@ package ua.englishschool.frontend.model.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import ua.englishschool.frontend.entity.core.RoleType;
 import ua.englishschool.frontend.entity.dto.StudentDto;
 import ua.englishschool.frontend.model.service.StudentService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 

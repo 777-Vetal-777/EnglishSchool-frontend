@@ -3,34 +3,21 @@ package ua.englishschool.frontend.entity;
 
 import ua.englishschool.frontend.entity.core.StudentInvoiceType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@Entity
 public class StudentInvoice {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
     private PeriodDate period;
 
-    @Column(name = "payment_date")
     private Timestamp paymentDate;
 
-    @Column
     private int money;
 
-    @Column
     private boolean payed;
 
-    @Column
     private StudentInvoiceType type;
 
     public long getId() {

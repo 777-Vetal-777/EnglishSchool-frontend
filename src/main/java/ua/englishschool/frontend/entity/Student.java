@@ -1,15 +1,9 @@
 package ua.englishschool.frontend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import java.util.Objects;
 
-@Entity
-@PrimaryKeyJoinColumn(name = "person_id")
 public class Student extends User {
 
-    @Column
     private String address;
 
     public String getAddress() {

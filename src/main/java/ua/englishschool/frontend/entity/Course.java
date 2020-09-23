@@ -1,39 +1,23 @@
 package ua.englishschool.frontend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import com.sun.istack.NotNull;
+
 import java.util.Objects;
 
-@Entity
 public class Course {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
     private String name;
 
-    @Column
     private PeriodDate periodDate;
 
-    @Column
     private PeriodTime periodTime;
 
-    @ManyToOne
-    @JoinColumn(name = "teacher_id", foreignKey = @ForeignKey(name = "FK_teachers_courses"))
     private Teacher teacher;
 
-    @Column
     private int price;
 
-    @Column
     private int maxCapacity;
 
 
