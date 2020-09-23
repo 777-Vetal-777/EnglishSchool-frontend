@@ -30,15 +30,18 @@ public class ContractController {
 
     private static final String SUCCESS_MESSAGES_ATTRIBUTE_NAME = "successMessage";
 
-
-    @Autowired
     private CourseService courseService;
 
-    @Autowired
     private ContractService contractService;
 
-    @Autowired
     private StudentService studentService;
+
+    @Autowired
+    public ContractController(CourseService courseService, ContractService contractService, StudentService studentService) {
+        this.courseService = courseService;
+        this.contractService = contractService;
+        this.studentService = studentService;
+    }
 
     @GetMapping(URL_FIND_BY_PHONE)
     public ModelAndView findByPhone(ModelAndView modelAndView) {

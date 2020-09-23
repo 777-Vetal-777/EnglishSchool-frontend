@@ -24,40 +24,14 @@ public class ContractRestServiceImpl implements ContractService {
 
     private static final String RESPONSE_ERROR_MESSAGE = "Response is null or has no body.";
 
-    @Autowired
     private RestHandler restHandler;
 
-    @Autowired
     private Logger logger;
 
-    @Override
-    public Optional<Long> create(Contract object) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean update(Contract object) {
-        return false;
-    }
-
-    @Override
-    public List<Contract> getAll() {
-        return null;
-    }
-
-    @Override
-    public Optional<Contract> getById(long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean isExists(long id) {
-        return false;
+    @Autowired
+    public ContractRestServiceImpl(RestHandler restHandler, Logger logger) {
+        this.restHandler = restHandler;
+        this.logger = logger;
     }
 
     @Override
@@ -91,8 +65,6 @@ public class ContractRestServiceImpl implements ContractService {
     }
 
     private Optional<ContractDto> getContractDtoFromResponseBody(ResponseEntity responseEntity) {
-
-
         String body = responseEntity.getBody().toString();
         ObjectMapper mapper = new ObjectMapper();
         ContractDto contractDto;

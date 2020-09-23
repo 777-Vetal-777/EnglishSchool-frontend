@@ -31,11 +31,15 @@ public class CourseRestServiceImpl implements CourseService {
 
     private static final String URL_GET_ALL_WAIT_COURSES_DTO = URL + "/get-all/wait/dto";
 
-    @Autowired
     private Logger logger;
 
-    @Autowired
     private RestHandler restHandler;
+
+    @Autowired
+    public CourseRestServiceImpl(Logger logger, RestHandler restHandler) {
+        this.logger = logger;
+        this.restHandler = restHandler;
+    }
 
     @Override
     public Optional<Long> create(Course course) {
@@ -91,30 +95,6 @@ public class CourseRestServiceImpl implements CourseService {
         return listCoursesDto;
     }
 
-    @Override
-    public boolean update(Course course) {
-        return false;
-    }
-
-    @Override
-    public List<Course> getAll() {
-        return null;
-    }
-
-    @Override
-    public Optional<Course> getById(long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean isExists(long id) {
-        return false;
-    }
 
     private List<CourseDto> getListCoursesDtoFromResponseBody(ResponseEntity responseEntity) {
         String body = responseEntity.getBody().toString();

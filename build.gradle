@@ -16,7 +16,7 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-web'
 	compile 'org.hibernate:hibernate-core'
 	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	compile('org.apache.commons:commons-lang3')
+	compile 'org.springframework.boot:spring-boot-starter-test'
 
 
 

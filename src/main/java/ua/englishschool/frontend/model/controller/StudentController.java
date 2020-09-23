@@ -31,8 +31,12 @@ public class StudentController {
 
     private static final String URL_GET_ALL_ACTIVE_STUDENTS_DTO = "/get-all-active";
 
-    @Autowired
     private StudentService studentService;
+
+    @Autowired
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @GetMapping(URL_CREATE_STUDENT)
     public ModelAndView addStudent(ModelAndView modelAndView) {

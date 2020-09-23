@@ -6,11 +6,13 @@ import ua.englishschool.frontend.entity.dto.StudentDto;
 import java.util.List;
 import java.util.Optional;
 
-public interface StudentService extends GenericService<Student> {
+public interface StudentService {
 
     Optional<StudentDto> findByPhone(String phone);
 
     List<StudentDto> getAllStudentsDto();
 
     List<StudentDto> getAllActiveStudentsDto();
+
+    Optional<Long> create(Student student);
 }

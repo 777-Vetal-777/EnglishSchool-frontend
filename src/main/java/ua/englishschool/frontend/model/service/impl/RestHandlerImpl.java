@@ -28,12 +28,15 @@ public class RestHandlerImpl implements RestHandler {
     @Value("${backend.domain}")
     private String backendAppDomain;
 
-    @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
     private Logger logger;
 
+    @Autowired
+    public RestHandlerImpl(RestTemplate restTemplate, Logger logger) {
+        this.restTemplate = restTemplate;
+        this.logger = logger;
+    }
 
     @Override
     public <T> Optional<ResponseEntity> doPost(String endpoint, T object) {

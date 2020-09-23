@@ -6,7 +6,7 @@ import ua.englishschool.frontend.entity.dto.CreateContractDto;
 
 import java.util.Optional;
 
-public interface ContractService extends GenericService<Contract> {
+public interface ContractService {
 
     Optional<ContractDto> findByPhone(String phone);
 

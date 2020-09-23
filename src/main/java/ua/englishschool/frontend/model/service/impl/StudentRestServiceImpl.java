@@ -30,13 +30,15 @@ public class StudentRestServiceImpl implements StudentService {
 
     private static final String RESPONSE_ERROR_MESSAGE = "Response is null or has no body.";
 
-
-    @Autowired
     private Logger logger;
 
-    @Autowired
     private RestHandler restHandler;
 
+    @Autowired
+    public StudentRestServiceImpl(Logger logger, RestHandler restHandler) {
+        this.logger = logger;
+        this.restHandler = restHandler;
+    }
 
     @Override
     public Optional<Long> create(Student student) {
@@ -91,32 +93,6 @@ public class StudentRestServiceImpl implements StudentService {
         List<StudentDto> listStudentsDto = getListStudentDtoFromResponseBody(responseEntity.get());
         logger.debug("Get active StudentsDto  is finished successfully.");
         return listStudentsDto;
-    }
-
-    @Override
-    public boolean update(Student student) {
-        return false;
-    }
-
-    @Override
-    public List<Student> getAll() {
-        return null;
-    }
-
-    @Override
-    public Optional<Student> getById(long id) {
-        logger.debug("Get student by id has been executed for id: " + id);
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean isExists(long id) {
-        return false;
     }
 
     private Optional<Student> getStudentFromResponseBody(ResponseEntity responseEntity) {

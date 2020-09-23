@@ -32,12 +32,15 @@ public class TeacherRestServiceImpl implements TeacherService {
 
     private static final String URL_CHANGE_STATUS_ACTIVE = "/teachers/change-active/";
 
-    @Autowired
     private Logger logger;
 
-    @Autowired
     private RestHandler restHandler;
 
+    @Autowired
+    public TeacherRestServiceImpl(Logger logger, RestHandler restHandler) {
+        this.logger = logger;
+        this.restHandler = restHandler;
+    }
 
     @Override
     public Optional<Long> create(Teacher teacher) {
@@ -93,31 +96,6 @@ public class TeacherRestServiceImpl implements TeacherService {
         }
         logger.debug("Change status active for teacher is finished successfully for teacher with id: " + teacherId);
         return true;
-    }
-
-    @Override
-    public boolean update(Teacher object) {
-        return false;
-    }
-
-    @Override
-    public List<Teacher> getAll() {
-        return null;
-    }
-
-    @Override
-    public Optional<Teacher> getById(long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean isExists(long id) {
-        return false;
     }
 
     private Optional<TeacherDto> getTeacherDtoFromResponseBody(ResponseEntity responseEntity) {

@@ -36,10 +36,12 @@ public class CourseController {
 
     private static final String SUCCESS_MESSAGES_ATTRIBUTE_NAME = "successMessage";
 
-
-    @Autowired
     private CourseService courseService;
 
+    @Autowired
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
     @GetMapping(URL_ADD_COURSE)
     public ModelAndView createCourse(ModelAndView modelAndView) {

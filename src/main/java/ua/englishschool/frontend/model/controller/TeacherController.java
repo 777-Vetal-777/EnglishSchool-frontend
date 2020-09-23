@@ -22,10 +22,6 @@ import java.util.Optional;
 @RequestMapping("/teachers")
 public class TeacherController {
 
-    private static final String ERROR_MESSAGES_ATTRIBUTE_NAME = "errorMessage";
-
-    private static final String SUCCESS_MESSAGES_ATTRIBUTE_NAME = "successMessage";
-
     private static final String URL_CREATE_TEACHER = "/create";
 
     private static final String URL_FIND_TEACHER_BY_PHONE = "/find-by-phone";
@@ -34,9 +30,16 @@ public class TeacherController {
 
     private static final String URL_ACTIVATE = "/change-active";
 
-    @Autowired
+    private static final String ERROR_MESSAGES_ATTRIBUTE_NAME = "errorMessage";
+
+    private static final String SUCCESS_MESSAGES_ATTRIBUTE_NAME = "successMessage";
+
     private TeacherService teacherService;
 
+    @Autowired
+    public TeacherController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
 
     @GetMapping(URL_CREATE_TEACHER)
     public ModelAndView create(ModelAndView modelAndView) {

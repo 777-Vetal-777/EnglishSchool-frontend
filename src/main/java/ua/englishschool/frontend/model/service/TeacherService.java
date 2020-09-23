@@ -6,12 +6,14 @@ import ua.englishschool.frontend.entity.dto.TeacherDto;
 import java.util.List;
 import java.util.Optional;
 
-public interface TeacherService extends GenericService<Teacher> {
+public interface TeacherService {
 
     Optional<TeacherDto> findByPhone(String phone);
 
     List<TeacherDto> getAllDto();
 
     boolean changeStatusActive(long teacherId);
+
+    Optional<Long> create(Teacher teacher);
 
 }
