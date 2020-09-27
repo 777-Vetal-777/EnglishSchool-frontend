@@ -1,31 +1,17 @@
 package ua.englishschool.frontend.entity;
 
-
-import com.sun.istack.NotNull;
 import ua.englishschool.frontend.entity.core.RoleType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import java.util.Objects;
 
 public abstract class User {
 
     private long id;
 
-    @NotNull
     private String firstName;
 
-    @NotNull
     private String lastName;
 
-    @NotNull
     private String phoneNumber;
 
     private RoleType role;

@@ -1,5 +1,9 @@
 package ua.englishschool.frontend.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 import java.util.Objects;
 
 public class Student extends User {

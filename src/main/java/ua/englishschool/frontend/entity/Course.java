@@ -1,7 +1,5 @@
 package ua.englishschool.frontend.entity;
 
-import com.sun.istack.NotNull;
-
 import java.util.Objects;
 
 public class Course {

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header">header</div>
+<div th:if="${unpaidInvoices}">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Phone</th>
+            <th scope="col">CourseName</th>
+            <th scope="col">Date(start)</th>
+            <th scope="col">Date(end)</th>
+            <th scope="col">Money</th>
+            <th scope="col">Paid</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="invoice : ${unpaidInvoices}">
+            <td th:text=${invoice.firstName}>FirstName</td>
+            <td th:text=${invoice.lastName}>LastName</td>
+            <td th:text=${invoice.phone}>PhoneNumber</td>
+            <td th:text=${invoice.courseName}>CourseName</td>
+            <td th:text=${invoice.startDate}>CourseName</td>
+            <td th:text=${invoice.endDate}>CourseName</td>
+            <td th:text=${invoice.money}>CourseName</td>
+            <td>
+                <form th:action="@{/invoices/payment}" method="post">
+                    <input type="hidden" id="teacherId" class="form-control" name="invoiceId"
+                           th:value="${invoice.invoiceId}"/>
+
+                    <button class="btn btn-primary btn-xs center-block" type="submit" name="action"
+                            th:text="Paid">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div th:if="!${unpaidInvoices}">
+    <div id="content" class="container">
+        <div class="panel-heading">
+            <div class="col-xs-6 col-md-offset-3">
+                <h2 id="reset-password-header">
+                    <center>Find Invoices by phone</center>
+                </h2>
+            </div>
+            <hr/>
+        </div>
+        <div class="panel-body">
+            <form th:action="@{/invoices/unpaid-by-phone}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number">
+                </div>
+                <center>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input type="submit" name="create-course-submit" id="create-course-submit"
+                                   tabindex="4"
+                                   class="btn btn-primary btn-lg"/>
+                        </div>
+                    </div>
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

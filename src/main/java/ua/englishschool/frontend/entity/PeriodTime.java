@@ -5,9 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.time.LocalTime;
 import java.util.Objects;
-
 
 public class PeriodTime {
 

@@ -1,8 +1,7 @@
 package ua.englishschool.frontend.entity.core;
 
 public enum StudentInvoiceType {
-    PENDING,
+    WAIT,
     CLOSED,
-    ACTIVE
-
+    OPEN
 }

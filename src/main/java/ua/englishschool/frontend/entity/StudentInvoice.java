@@ -1,9 +1,8 @@
 package ua.englishschool.frontend.entity;
 
-
 import ua.englishschool.frontend.entity.core.StudentInvoiceType;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class StudentInvoice {
@@ -12,11 +11,9 @@ public class StudentInvoice {
 
     private PeriodDate period;
 
-    private Timestamp paymentDate;
+    private LocalDate paymentDate;
 
     private int money;
-
-    private boolean payed;
 
     private StudentInvoiceType type;
 
@@ -36,11 +33,11 @@ public class StudentInvoice {
         this.period = period;
     }
 
-    public Timestamp getPaymentDate() {
+    public LocalDate getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Timestamp paymentDate) {
+    public void setPaymentDate(LocalDate paymentDate) {
         this.paymentDate = paymentDate;
     }
 
@@ -50,14 +47,6 @@ public class StudentInvoice {
 
     public void setMoney(int money) {
         this.money = money;
-    }
-
-    public boolean isPayed() {
-        return payed;
-    }
-
-    public void setPayed(boolean payed) {
-        this.payed = payed;
     }
 
     public StudentInvoiceType getType() {
@@ -75,7 +64,6 @@ public class StudentInvoice {
         StudentInvoice that = (StudentInvoice) o;
         return id == that.id &&
                 money == that.money &&
-                payed == that.payed &&
                 Objects.equals(period, that.period) &&
                 Objects.equals(paymentDate, that.paymentDate) &&
                 type == that.type;
@@ -83,7 +71,7 @@ public class StudentInvoice {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, period, paymentDate, money, payed, type);
+        return Objects.hash(id, period, paymentDate, money, type);
     }
 
     @Override
@@ -93,7 +81,6 @@ public class StudentInvoice {
                 ", period=" + period +
                 ", paymentDate=" + paymentDate +
                 ", money=" + money +
-                ", payed=" + payed +
                 ", type=" + type +
                 '}';
     }

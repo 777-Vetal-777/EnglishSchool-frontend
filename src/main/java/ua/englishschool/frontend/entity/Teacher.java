@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Teacher extends User {
 
+
     private int maxCourses;
 
     public int getMaxCourses() {
